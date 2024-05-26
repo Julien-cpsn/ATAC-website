@@ -1,6 +1,8 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {PluginOptions} from "@easyops-cn/docusaurus-search-local";
+import {getFourLatestVersion, getLatestVersion} from "./version";
 
 const config: Config = {
   title: 'ATAC',
@@ -29,6 +31,16 @@ const config: Config = {
     locales: ['en'],
   },
 
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      ({
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+      }) satisfies PluginOptions,
+    ]
+  ],
+
   presets: [
     [
       'classic',
@@ -37,13 +49,9 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/Julien-cpsn/ATAC-website/tree/main/',
+          lastVersion: getLatestVersion(),
+          onlyIncludeVersions: getFourLatestVersion()
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -66,13 +74,30 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Documentation',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          to: 'download',
+          label: 'Download',
+          position: 'left'
+        },
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+          dropdownActiveClassDisabled: true,
+        },
         {
           href: 'https://github.com/Julien-cpsn/ATAC',
-          label: 'GitHub',
           position: 'right',
+          className: 'github-link',
+          'aria-label': 'GitHub repository',
+        },
+        {
+          href: 'https://discord.gg/WpTGyvFWFa',
+          position: 'right',
+          className: 'discord-link',
+          'aria-label': 'Discord server',
         },
       ],
     },
@@ -84,7 +109,7 @@ const config: Config = {
           items: [
             {
               label: 'Getting started',
-              to: '/docs/getting-started',
+              to: '/docs/getting-started/installation',
             },
           ],
         },
@@ -101,10 +126,6 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
               href: 'https://github.com/Julien-cpsn/ATAC',
             },
@@ -116,8 +137,11 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['toml'],
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: ['docusaurus-node-polyfills']
 };
 
 export default config;

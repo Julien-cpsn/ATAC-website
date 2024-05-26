@@ -1,0 +1,84 @@
+---
+title: Key binding file
+---
+
+import {useEffect, useState} from "react";
+import CodeBlock from '@theme/CodeBlock';
+
+export function KeyBindings() {
+    const [keybindings, setKeybindings] = useState('Loading...')
+
+    useEffect(() => {
+        async function fetchKeyBindings() {
+            const response = await fetch("https://raw.githubusercontent.com/Julien-cpsn/ATAC/main/key_bindings_templates/default_key_bindings.toml")
+            const body = await response.text()
+
+            setKeybindings(body)
+        }
+
+        fetchKeyBindings()
+    }, [])
+
+
+    return <CodeBlock title="default_key_bindings.toml" language="toml">{keybindings}</CodeBlock>
+}
+
+# Key Binding File
+
+## Overview
+
+ATAC allows you to configure key bindings to tailor your workflow. Configurable key bindings enhance usability and ensure you can interact with the application in a way that suits your preferences.
+You can set up your key bindings by specifying the path to your configuration file in the `ATAC_KEY_BINDINGS` environment variable.
+
+You can preview the default key bindings [here](#default-key-bindings).
+
+## Setting Up Key Bindings
+
+To start configuring your key bindings, follow these steps:
+
+1. **Create or copy your key binding file:**
+
+    - ATAC includes two example configuration files located in the [`key_bindings_templates`](https://github.com/Julien-cpsn/ATAC/tree/main/key_bindings_templates) folder from ATAC's repository:
+        - [`default_key_bindings.toml`](https://github.com/Julien-cpsn/ATAC/blob/main/key_bindings_templates/default_key_bindings.toml)
+        - [`vim_key_bindings.toml`](https://github.com/Julien-cpsn/ATAC/blob/main/key_bindings_templates/vim_key_bindings.toml)
+    - You can use these templates as a reference or starting point for your custom key bindings.
+
+2. **Specify the path to your configuration file:**
+
+    - Set the `ATAC_KEY_BINDINGS` environment variable to the path of your key binding configuration file. For example:
+```bash
+export ATAC_KEY_BINDINGS=/path/to/your_key_bindings.toml
+ ```
+
+3. **Edit the configuration file:**
+
+    - Open your key binding configuration file in a text editor.
+    - You can choose between two options for text area navigation and editing:
+        - **Custom**: Define your own key bindings to suit your specific needs (Used on the default configuration).
+        - **VimEmulation**: Implements most of the Vim key bindings, including various modes and commands.
+
+## Example Configuration Files
+
+### Default Key Bindings
+
+The default key bindings configuration file (`default_key_bindings.toml`) provides a basic setup that you can modify to fit your requirements. This file includes standard key bindings that are intuitive and easy to use.
+
+Here is the default key bindings configuration file:
+
+<KeyBindings />
+
+### Vim Key Bindings
+
+The Vim key bindings configuration file (`vim_key_bindings.toml`) emulates the key bindings from Vim. This setup is ideal for users who are familiar with Vim and prefer its modal editing style.
+Considering text areas such as request's body, Vim modes are almost fully implemented.
+
+## Accessing Help
+
+ATAC provides in-app help to assist you with key bindings:
+
+- **Current Key Bindings Display**: The help section at the bottom right of the screen shows your current key bindings.
+- **Help Popup**: Press `Ctrl-h` (with the default key bindings) to open a help popup that displays all the hidden shortcuts and actions available in ATAC.
+
+## Contributing New Key Bindings
+
+ATAC is an open-source project, and contributions are welcome! If you create a new key binding configuration file that you think would benefit other users, consider creating a pull request to add it to the project.

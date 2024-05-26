@@ -4,15 +4,25 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 2rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
+.gif {
+  width: 75%;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
+  }
+
+  .gif {
+    width: 100%;
+    border-radius: 5px;
   }
 }
 

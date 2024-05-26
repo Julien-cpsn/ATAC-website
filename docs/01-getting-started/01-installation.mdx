@@ -1,0 +1,84 @@
+---
+title: Installation
+---
+
+import { getLatestVersion } from "../../version"
+
+Welcome to the installation guide for ATAC, your free, open-source, offline, and account-less terminal user interface (TUI) for managing and sending HTTP requests. This guide will walk you through the various methods available to install ATAC on your system, including using Cargo, package managers for different Linux distributions, Homebrew for macOS, downloading precompiled binaries, and compiling from source. Follow the instructions for your preferred installation method to get started with ATAC quickly and easily.
+
+## Install with Cargo
+
+:::warning
+Ensure your Rust version is at least 1.78 before proceeding.
+:::
+
+To install ATAC using Cargo, run the following command in your terminal:
+
+```shell
+cargo install atac
+```
+
+## Install from Arch
+
+ATAC is available in the Arch Linux repositories. You can install it using `pacman`:
+
+```shell
+pacman -S atac
+```
+
+## Install with Homebrew
+
+For macOS users, ATAC can be installed using Homebrew:
+
+```bash
+brew tap julien-cpsn/atac
+brew install atac
+```
+
+## Install from Fedora COPR
+
+For Fedora users, ATAC can be installed from the COPR repository:
+
+```bash
+dnf copr enable joxcat/atac
+dnf install atac
+```
+
+## Binary
+
+The binary for the {getLatestVersion()} version <a href={ 'https://github.com/Julien-cpsn/ATAC/releases/tag/v' + getLatestVersion() }>v{getLatestVersion()}</a>.
+
+You can also download the latest release binaries from the [ATAC GitHub releases page](https://github.com/Julien-cpsn/ATAC/releases/latest).
+
+:::warning
+Run the binary from a terminal. To do this, you may need to add the binary to your PATH. It cannot be run like other graphical applications since it requires CLI arguments.
+:::
+
+:::info macOS users
+After downloading the binary, you might need to run the following command to avoid quarantine issues:
+```bash
+sudo xattr -rd com.apple.quarantine ~/path/to/atac
+```
+:::
+
+## Compile by Yourself
+
+:::warning
+Ensure your Rust version is at least 1.78 before proceeding.
+:::
+
+To compile ATAC from the source, clone the repository and run the following commands:
+
+```bash
+cargo run
+cargo run -- -h
+```
+
+:::tip
+To build the latest release version, use:
+```bash
+cargo build --release
+```
+:::
+
+By following these installation methods, you can easily set up ATAC on your system and start managing and sending HTTP requests efficiently.
