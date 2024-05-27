@@ -4,6 +4,7 @@ import Parser from 'rss-parser'
 import React, {useEffect, useState} from "react";
 import Heading from "@theme/Heading";
 import Link from '@docusaurus/Link';
+import style from './index.module.css'
 
 type GithubReleases = {
   feedUrl: string,
@@ -65,7 +66,7 @@ function VersionLinks() {
             // @ts-ignore
             changelog = changelog.replaceAll(matches[i], nicely_formed_url)
 
-            console.log("from: ", matches[i], "to: ", nicely_formed_url)
+            //console.log("from: ", matches[i], "to: ", nicely_formed_url)
           }
         }
 
@@ -73,7 +74,7 @@ function VersionLinks() {
 
         for (const architecture of architectures) {
           const architecture_with_version = architecture.replace('VERSION', item.title)
-          let li = <li>
+          let li = <li key={architecture}>
             <a href={`https://github.com/Julien-cpsn/ATAC/releases/download/${item.title}/${architecture_with_version}`}>
               {architecture_with_version}
             </a>
@@ -82,14 +83,14 @@ function VersionLinks() {
           artifact_links.push(li)
         }
 
-        const li = <div id={item.id} key={item.id}>
-          <div className="margin-horiz--xl">
+        const div = <div id={item.id} key={item.id}>
+          <div className={style.item_margin}>
             <Heading as="h3">
               Version: <a href={item.link}>{item.title}</a>
             </Heading>
             <div>
               <Heading as="h3">Changelog:</Heading>
-              <div className='margin-horiz--lg padding-horiz--lg padding-vert--md margin-bottom--md' style={{ background: 'rgb(50, 50, 50, 0.5)', borderRadius: '8px'}} dangerouslySetInnerHTML={{__html: changelog}}></div>
+              <div className={style.changelog_margin} dangerouslySetInnerHTML={{__html: changelog}}></div>
               <Heading as="h3">Artifacts:</Heading>
               <ul className="margin-left--lg margin-vert--xs">
                 { artifact_links }
@@ -99,7 +100,7 @@ function VersionLinks() {
           <hr className="margin-top--lg" />
         </div>
 
-        links.push(li);
+        links.push(div);
       }
 
       return links
@@ -124,7 +125,7 @@ export default function Home(): JSX.Element {
       description="All doc versions of the ATAC website"
     >
       <main>
-        <div className="margin--xl">
+        <div className={style.main_margin}>
           <Heading as="h1" className="text--center margin-bottom--md">All releases</Heading>
           <div className="text--center margin-bottom--lg">
             First, please read the <Link to="/docs/getting-started/installation">Installation guide</Link> to the all the installation possibilities.

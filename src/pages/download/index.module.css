@@ -1,0 +1,38 @@
+.main_margin {
+    margin: 4% 8%;
+}
+
+.item_margin {
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
+.changelog_margin {
+    background: rgb(50, 50, 50, 0.5);
+    border-radius: 8px;
+
+    margin-left: 32px;
+    margin-right: 32px;
+    margin-bottom: 16px;
+
+    padding: 16px 32px;
+}
+
+@media screen and (max-width: 996px) {
+    .main_margin {
+        margin: 8% 2%;
+    }
+
+    .item_margin {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .changelog_margin {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 8px;
+
+        padding: 16px 8px;
+    }
+}
