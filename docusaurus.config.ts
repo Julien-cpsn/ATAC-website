@@ -134,6 +134,9 @@ const config: Config = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Julien Caposiena. Built with Docusaurus.`,
     },
+    tableOfContents: {
+      maxHeadingLevel: 4,
+    },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
