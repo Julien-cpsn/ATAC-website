@@ -28,7 +28,7 @@ function HomepageHeader() {
         </div>
         <img
             className={clsx('margin-top--lg shadow--tl', styles.gif)}
-            src="https://raw.githubusercontent.com/Julien-cpsn/ATAC/main/demo.gif"
+            src="https://raw.githubusercontent.com/Julien-cpsn/ATAC/main/gifs/demo.gif"
             alt="Demo gif"
         />
       </div>
