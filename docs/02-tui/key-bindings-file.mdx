@@ -10,7 +10,7 @@ export function KeyBindings() {
 
     useEffect(() => {
         async function fetchKeyBindings() {
-            const response = await fetch("https://raw.githubusercontent.com/Julien-cpsn/ATAC/main/key_bindings_templates/default_key_bindings.toml")
+            const response = await fetch("https://raw.githubusercontent.com/Julien-cpsn/ATAC/main/example_resources/key_bindings/default_key_bindings.toml")
             const body = await response.text()
 
             setKeybindings(body)
@@ -38,9 +38,9 @@ To start configuring your key bindings, follow these steps:
 
 1. **Create or copy your key binding file:**
 
-    - ATAC includes two example configuration files located in the [`key_bindings_templates`](https://github.com/Julien-cpsn/ATAC/tree/main/key_bindings_templates) folder from ATAC's repository:
-        - [`default_key_bindings.toml`](https://github.com/Julien-cpsn/ATAC/blob/main/key_bindings_templates/default_key_bindings.toml)
-        - [`vim_key_bindings.toml`](https://github.com/Julien-cpsn/ATAC/blob/main/key_bindings_templates/vim_key_bindings.toml)
+    - ATAC includes two example configuration files located in the [`example_resources/key_bindings`](https://github.com/Julien-cpsn/ATAC/tree/main/example_resources/key_bindings) folder from ATAC's repository:
+        - [`default_key_bindings.toml`](https://github.com/Julien-cpsn/ATAC/blob/main/example_resources/key_bindings/default_key_bindings.toml)
+        - [`vim_key_bindings.toml`](https://github.com/Julien-cpsn/ATAC/blob/main/example_resources/key_bindings/vim_key_bindings.toml)
     - You can use these templates as a reference or starting point for your custom key bindings.
 
 2. **Specify the path to your configuration file:**
