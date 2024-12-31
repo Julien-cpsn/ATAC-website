@@ -20,6 +20,14 @@ ID=15
 FILE_NAME=Cargo.toml
 ```
 
+Once you have created your environment file you can now load it using the following command.
+
+```bash
+# atac -d <directory>
+# <directory> - The directory that contains the environment file
+atac -d .
+```
+
 ### Using Environment Variables
 
 To use these environment variables within your requests, reference them by writing `{{my_variable_name}}`. For example:
