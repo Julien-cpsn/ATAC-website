@@ -23,9 +23,11 @@ FILE_NAME=Cargo.toml
 Once you have created your environment file you can now load it using the following command.
 
 ```bash
-# atac -d <directory>
-# <directory> - The directory that contains the environment file
-atac -d .
+# if you use the default app directory or the ATAC_MAIN_DIR environment variable (OS side)
+atac
+
+# or with -d <directory> - The directory that contains the .env.my_env_name file
+atac -d <directory>
 ```
 
 ### Using Environment Variables
