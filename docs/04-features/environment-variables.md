@@ -20,6 +20,16 @@ ID=15
 FILE_NAME=Cargo.toml
 ```
 
+Once you have created your environment file you can now load it using the following command.
+
+```bash
+# if you use the default app directory or the ATAC_MAIN_DIR environment variable (OS side)
+atac
+
+# or with -d <directory> - The directory that contains the .env.my_env_name file
+atac -d <directory>
+```
+
 ### Using Environment Variables
 
 To use these environment variables within your requests, reference them by writing `{{my_variable_name}}`. For example:
